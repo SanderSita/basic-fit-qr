@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Fit QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+      #qrcode {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>basic fit</h2>
+    <div id="qrcode"></div>
+    <script>
+      function generateQRCode() {
+        let timestamp = Math.floor(Date.now() / 1000); // Get current Unix timestamp
+        let characters = Math.random()
+          .toString(36)
+          .substring(2, 10)
+          .toUpperCase();
+        let qrData = `GM2:V000765285:ZBU:${timestamp}:${characters}`;
+        document.getElementById("qrcode").innerHTML = "";
+        new QRCode(document.getElementById("qrcode"), {
+          text: qrData,
+          width: 200,
+          height: 200,
+        });
+      }
+
+      generateQRCode();
+      setInterval(generateQRCode, 5000);
+    </script>
+  </body>
+</html>
