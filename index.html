@@ -29,7 +29,7 @@
           .toString(36)
           .substring(2, 10)
           .toUpperCase();
-        let qrData = `GM2:V000765285:ZBU:${timestamp}:${characters}`;
+        let qrData = `GM2:V000765285:ZYT:${timestamp}:${characters}`;
         document.getElementById("qrcode").innerHTML = "";
         new QRCode(document.getElementById("qrcode"), {
           text: qrData,
